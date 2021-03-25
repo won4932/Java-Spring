@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Text-Translation-API-V3-Java-master/BreakSentence/src/main/java"/>
+	<classpathentry kind="src" path="Text-Translation-API-V3-Java-master/Detect/src/main/java"/>
+	<classpathentry kind="src" path="Text-Translation-API-V3-Java-master/Dictionary/src/main/java"/>
+	<classpathentry kind="src" path="Text-Translation-API-V3-Java-master/GetLanguages/src/main/java"/>
+	<classpathentry kind="src" path="Text-Translation-API-V3-Java-master/Translate/src/main/java"/>
+	<classpathentry kind="src" path="Text-Translation-API-V3-Java-master/Transliterate/src/main/java"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
