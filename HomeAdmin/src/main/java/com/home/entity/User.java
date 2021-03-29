@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,7 +46,10 @@ public class User {
 	//@Column(name = "account")
 	private String account;
 	private String password;
-	private String status;
+	
+	@Enumerated(EnumType.STRING)
+	private UserEnum status; // REGISTERED, UNREGISTERED
+	
 	private String role;
 	
 	private String phoneNumber;

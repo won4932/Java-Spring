@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,7 +46,10 @@ public class OrderGroup {
 	private Long id;
 	
 	private String status;
-	private String orderType;
+	
+	@Enumerated(EnumType.STRING)
+	private OrderEnum orderType; // ALL(묶음), EACH(개별)
+	
 	private String revAddress;
 	private String revName;
 	private String paymentType;

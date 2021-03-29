@@ -1,5 +1,9 @@
 package com.home.network;
 
+import java.time.LocalDateTime;
+
+import com.home.entity.UserEnum;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +21,13 @@ public class ApiRequest {
 	
 	private String password;
 	
-	private String status;
+	private UserEnum status;
 	
 	private String email;
 	
 	private String phoneNumber;
+
+	private LocalDateTime RegisteredAt;
+
+	private LocalDateTime UnregisteredAt;
 }
