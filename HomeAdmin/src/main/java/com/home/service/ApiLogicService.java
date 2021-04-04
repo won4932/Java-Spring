@@ -1,9 +1,13 @@
 package com.home.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.home.dto.UserRepository;
@@ -13,6 +17,7 @@ import com.home.network.ApiRequest;
 import com.home.network.ApiResponse;
 import com.home.network.CrudInterface;
 import com.home.network.Header;
+import com.home.network.Pagination;
 
 @Service
 //public class ApiLogicService implements CrudInterface<ApiRequest, ApiResponse>{
@@ -41,7 +46,7 @@ public class ApiLogicService extends BaseService<ApiRequest, ApiResponse, User>{
 		User newUser = baseRepository.save(user);
 		// 3. 생성된 데이터 -> userApiResponse Return
 		
-		return response(newUser);
+		return Header.DataOK(response(newUser));
 	}
 
 	@Override
@@ -56,6 +61,8 @@ public class ApiLogicService extends BaseService<ApiRequest, ApiResponse, User>{
 //		return userRepository.findById(id)
 		return baseRepository.findById(id)
 		.map(user -> response(user))
+		// .map(ApiResponse -> Header.DataOK(ApiResponse))
+		.map(Header::DataOK)
 		.orElseGet(() -> Header.ERROR("데이터 없음"));
 	}
 
@@ -82,6 +89,7 @@ public class ApiLogicService extends BaseService<ApiRequest, ApiResponse, User>{
 //				.map(user -> userRepository.save(user)) // update
 				.map(user -> baseRepository.save(user))
 				.map(updateUser -> response(updateUser)) // userApiResonse
+				.map(Header::DataOK)
 				.orElseGet(() -> Header.ERROR("데이터 없음"));
 		
 		// 4. userApiResponse
@@ -103,7 +111,24 @@ Optional<User> optional = baseRepository.findById(id);
 		.orElseGet(() -> Header.ERROR("데이터 없음!!"));
 	}
 	
-	private Header<ApiResponse> response(User user) {
+//	private Header<ApiResponse> response(User user) {
+//		// user -> apiResponse
+//		
+//		ApiResponse apiResponse = ApiResponse.builder()
+//				.id(user.getId())
+//				.account(user.getAccount())
+//				.password(user.getPassword())
+//				.email(user.getEmail())
+//				.phoneNumber(user.getPhoneNumber())
+//				.status(user.getStatus())
+//				.registeredAt(user.getRegisteredAt())
+//				.unregisteredAt(user.getUnregisteredAt())
+//				.build();
+//
+//		return Header.DataOK(apiResponse);
+//	}
+	
+	private ApiResponse response(User user) {
 		// user -> apiResponse
 		
 		ApiResponse apiResponse = ApiResponse.builder()
@@ -117,6 +142,24 @@ Optional<User> optional = baseRepository.findById(id);
 				.unregisteredAt(user.getUnregisteredAt())
 				.build();
 
-		return Header.DataOK(apiResponse);
+		return apiResponse;
+	}
+	
+	
+	public Header<List<ApiResponse>> search(Pageable pageable) {
+		Page<User> users = baseRepository.findAll(pageable);
+		
+		List<ApiResponse> userApiResponseList = users.stream()
+				.map(user -> response(user))
+				.collect(Collectors.toList());
+		
+		Pagination pagination = Pagination.builder()
+				.totalPages(users.getTotalPages())
+				.totalElements(users.getTotalElements())
+				.currentPage(users.getNumber())
+				.currentElements(users.getNumberOfElements())
+				.build();
+		
+		return Header.DataOK(userApiResponseList, pagination);
 	}
 }

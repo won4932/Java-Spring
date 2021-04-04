@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @ComponentScan("com.home")
 @EnableJpaRepositories("com.home.dto")
-@EntityScan("com.home.entity")
+@EntityScan({"com.home.entity", "com.home.front"})
 public class HomeAdminApplication {
 
 	public static void main(String[] args) {

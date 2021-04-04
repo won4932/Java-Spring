@@ -50,8 +50,6 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private UserEnum status; // REGISTERED, UNREGISTERED
 	
-	private String role;
-	
 	private String phoneNumber;
 	private String email;
 	
@@ -67,10 +65,6 @@ public class User {
 	@LastModifiedBy
 	private String updatedBy;
 	
-	private LocalDateTime lastLoginAt;
-	private Integer loginFailCount;
-	
-	private LocalDateTime passwordUpdatedAt;
 	private LocalDateTime registeredAt;
 	private LocalDateTime unregisteredAt;
 	
