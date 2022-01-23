@@ -1,2 +1,14 @@
-# Study-JAVA-Spring
-JAVA기반 Spring환경 플러그인 적용
+# Java-Spring
+
+## 개요
+스프링 프레임워크 기반 자바관련 소스, 로직기반 모음
+- API : Microsoft OpenSource Sample Code
+- HomeAdmin : JPA 사용 간 CRUD 테스트 프로젝트
+
+## Environment
+- Language : java
+- Tool : Eclipse(STS)
+- Category : Web, SpringFramework, OpenAPI, lombok, JPA
+
+## 상세기능
+
