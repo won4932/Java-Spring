@@ -22,11 +22,12 @@ public class Demo {
 	public static void main(String[] args) throws FirebaseException, JsonParseException, JsonMappingException, IOException, JacksonUtilityException {
 //		CalendarView cal = new CalendarView();
 		
+		// API KEY FILE
 		// get the base-url (ie: 'http://gamma.firebase.com/username')
-		String firebase_baseUrl = "https://my-project-190923-9c4e8.firebaseio.com/";
+		String firebase_baseUrl = "";
 
 		// get the api-key (ie: 'tR7u9Sqt39qQauLzXmRycXag18Z2')
-		String firebase_apiKey = "AIzaSyDd4NN7ii-hqHBb-qC-xWbens8hhZbTuKM ";
+		String firebase_apiKey = "";
 
 		for( String s : args ) {
 
