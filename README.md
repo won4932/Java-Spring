@@ -5,10 +5,12 @@
 - API : Microsoft OpenSource Sample Code
 - HomeAdmin : JPA 사용 간 CRUD 테스트 프로젝트
 - SpringBoard2 : 인강 진행 중
+- firebase4j-master : PC, Moblie 데이터 연동 간 firebase dabase Test 프로젝트
+
 ## Environment
 - Language : java
 - Tool : Eclipse(STS)
-- Category : Web, SpringFramework, OpenAPI, lombok, JPA
+- Category : Web, SpringFramework, OpenAPI, lombok, JPA, Firebase, Microsoft
 
 ## 상세기능
 Translating text, jpa
